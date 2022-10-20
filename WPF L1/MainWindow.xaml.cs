@@ -34,11 +34,17 @@ namespace WPF_L1
                 case MouseButton.Right:
                     Title = btn!.Content.ToString();
                     grid.Children.Remove(btn);
+               
+                    if (grid.Children.Count == 0) MessageBox.Show("All Buttons were deleted!","Information",MessageBoxButton.OK,MessageBoxImage.Information);
+
                     break;
             }
-
         }
 
-
+        private void ColorWindow_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Right)
+                if (grid.Children.Count == 0) MessageBox.Show("There are no Button for delete proccess!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
